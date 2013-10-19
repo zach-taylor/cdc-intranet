@@ -1,0 +1,16 @@
+<%= form_for(@password) do |f| %>
+  <% if @password.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@password.errors.count, "error") %> prohibited this password from being saved:</h2>
+    <ul>
+    <% @password.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

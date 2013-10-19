@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  username: MyString
+  password: MyString
+  role_id: 1
+  active: false
+  ssn: MyString
+  bank_account: MyString
+
+two:
+  username: MyString
+  password: MyString
+  role_id: 1
+  active: false
+  ssn: MyString
+  bank_account: MyString

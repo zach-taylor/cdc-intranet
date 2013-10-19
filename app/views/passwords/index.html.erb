@@ -1,0 +1,21 @@
+<h1>Listing passwords</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @passwords.each do |password| %>
+  <tr>
+    <td><%= link_to 'Show', password %></td>
+    <td><%= link_to 'Edit', edit_password_path(password) %></td>
+    <td><%= link_to 'Destroy', password, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Password', new_password_path %>

@@ -1,0 +1,59 @@
+<p class="notice"><%= notice %></p>
+<div>
+	<%= link_to 'Back', employees_path, {:class => 'btn'} %>
+</div>
+<div class="panel panel-info">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><h3 class="panel-title">Employee: <%= @employee.name %></h3></div>
+  <div class="panel-body">
+  	<div class="row">
+  		<div class="col-md-12">
+	  		<%= link_to 'Edit', edit_employee_path(@employee), {:class => 'btn btn-default'} %>
+  		</div>
+		</div>
+  	<div class="row">
+	  	<div class="col-md-4">
+		    <dl class="dl-horizontal">
+				  <dt>Username:</dt><dd><%= @employee.username %></dd>
+				  <dt>Password:</dt><dd><%= @employee.password %></dd>
+				  <dt>Role:</dt><dd><%= @employee.role %></dd>
+				</dl>
+	  	</div>
+  		<div class="col-md-4">
+		    <dl class="dl-horizontal">
+				  <dt>Active:</dt><dd><%= @employee.active %></dd>
+				  <dt>Department:</dt><dd><%= @employee.department %></dd>
+				</dl>
+			</div>
+			<div class="col-md-4">
+		    <dl class="dl-horizontal">
+				  <dt>Social Security Number:</dt><dd><%= @employee.ssn %></dd>
+				  <dt>Bank Account:</dt><dd><%= @employee.bank_account %></dd>
+				</dl>
+			</div>
+  	</div>
+  </div>
+
+  <!-- Table -->
+  <table class="table">
+  	<thead>
+  		<tr>
+  			<th>Service</th>
+  			<th>Username</th>
+  			<th>Password</th>
+  			<th>Shared</th>
+  		</tr>
+  	</thead>
+  	<tbody>
+    	<%= @passwords.each do |pw| %>
+    		<tr>
+    			<td><%= pw.service %></td>
+    			<td><%= pw.username %></td>
+    			<td><%= pw.password %></td>
+    			<td><%= pw.shared %></td>
+    		</tr>
+			<% end %>
+  	</tbody>
+  </table>
+</div>
+
