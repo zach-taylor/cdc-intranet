@@ -1,4 +1,4 @@
-<%= form_for(@password) do |f| %>
+<%= form_for(@password, {:html => { :class => "form-inline", :role => "form" }}) do |f| %>
   <% if @password.errors.any? %>
   <div id="errorExplanation">
     <h2><%= pluralize(@password.errors.count, "error") %> prohibited this password from being saved:</h2>
@@ -9,8 +9,26 @@
     </ul>
   </div>
   <% end %>
-
+  
+ <fieldset>
+ 		<div class="form-group">
+			<%= f.label :service %>
+			<%= f.text_field :service, {:class => "form-control"} %>
+		</div>
+		
+		<div class="form-group">
+			<%= f.label :username %>
+			<%= f.text_field :username, {:class => "form-control"} %>
+		</div>
+ 	
+		<div class="form-group">
+			<%= f.label :password %>
+			<%= f.text_field :password, {:class => "form-control"} %>
+		</div>
+	</fieldset>
+	
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit", {:class => "btn btn-primary"} %>
+    <%= link_to 'Back to Index', passwords_path, {:class => "btn btn-default"} %>
   </div>
 <% end %>

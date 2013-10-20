@@ -1,4 +1,5 @@
 class EmployeesController < ApplicationController
+	layout 'application'
 
 	def index
     @employees = Employee.find(:all)

@@ -1,4 +1,6 @@
 class PasswordsController < ApplicationController
+	layout 'application'
+
   # GET /passwords
   # GET /passwords.xml
   def index
@@ -41,6 +43,8 @@ class PasswordsController < ApplicationController
   # POST /passwords.xml
   def create
     @password = Password.new(params[:password])
+    
+    @password.employee = @current_user
 
     respond_to do |format|
       if @password.save

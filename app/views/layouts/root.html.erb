@@ -8,9 +8,12 @@
     <link href="/stylesheets/land.css" rel="stylesheet">
   </head>
   <body>
-  	<div class="container">
+  	<div class="well">
   		<%= yield %>
   	</div>
+		<div class="footer">
+			<%= image_tag('logo.png', :alt => 'CDC Logo') %>
+		</div>
     <script src="/javascripts/jquery.js"></script>
     <script src="/javascripts/bootstrap.min.js"></script>
   </body>

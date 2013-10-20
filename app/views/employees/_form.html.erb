@@ -28,8 +28,14 @@
 		
 		<div class="form-group">
 			<%= f.label :role %>
-			<%= f.select :role, Employee::ROLES, {:class => "form-control"} %>
+			<%= f.select :role, Employee::ROLES, {}, {:class => "form-control"} %>
 		</div>
+		
+		<div class="checkbox">
+			<%= f.label :active %>
+			<%= f.check_box :active %>
+		</div>
+			
 	</fieldset>
 	
 	<fieldset>
@@ -48,9 +54,10 @@
 			<%= f.text_field :bank_account, {:class => "form-control"} %>
 		</div>
 	</fieldset>
+	
 
   <div class="actions">
     <%= f.submit "Submit", {:class => "btn btn-primary"} %>
-    <%= link_to 'Back', employees_path, {:class => "btn btn-default"} %>
+    <%= link_to 'Back to Index', employees_path, {:class => "btn btn-default"} %>
   </div>
 <% end %>

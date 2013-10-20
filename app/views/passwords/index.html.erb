@@ -1,21 +1,31 @@
-<h1>Listing passwords</h1>
+<h1>Your passwords</h1>
 
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @passwords.each do |password| %>
-  <tr>
-    <td><%= link_to 'Show', password %></td>
-    <td><%= link_to 'Edit', edit_password_path(password) %></td>
-    <td><%= link_to 'Destroy', password, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+<table class="table table-striped">
+	<thead>
+  	<tr>
+   	 <th>Service</th>
+	 	 <th>Password</th>
+	 	 <th>Shared?</th>
+	 	 <th>Actions</th>
+	 	 </tr>
+	</thead>
+	<tbody>
+		<% @passwords.each do |password| %>
+			<tr>
+				<td><%= password.service %></td>
+				<td><%= password.password %></td>
+				<td>
+					<%= password.shared %>
+				</td>
+    		<td>
+    			<%= link_to raw('<span class="glyphicon glyphicon-edit"></span>'), edit_password_path(password), {:class => 'btn btn-primary btn-xs'} %>
+    			<%= link_to raw('<span class="glyphicon glyphicon-trash"></span>'), password, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger btn-xs' %>
+    		</td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <br />
 
-<%= link_to 'New Password', new_password_path %>
+<%= link_to raw('<span class="glyphicon glyphicon-plus"></span>'), new_password_path, {:class => "btn btn-success"} %>

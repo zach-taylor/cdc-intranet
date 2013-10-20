@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  layout 'application'
+  layout 'root'
 
   # bad practice:  blacklisting is bad, whitelisting is better
   #   good = before_filter :authorize, :except => :login
@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   # as instance methods in all of the controllers
   def authorize
     unless Employee.find_by_id(session[:employee_id])
-      flash[:notice] = 'login'
+      flash[:notice] = 'Please login'
       redirect_to '/login'
     end
   end
@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
       employee = Employee.authenticate(params[:username], params[:password])
       if employee
         session[:employee_id] = employee.id
+        flash[:notice] = 'Welcome ' + employee.name + '!'
         redirect_to '/employees'
       else
         flash.now[:notice] = 'Invalid user/pass combination'
