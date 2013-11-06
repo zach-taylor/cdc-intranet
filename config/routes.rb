@@ -1,4 +1,6 @@
 Loveme::Application.routes.draw do |map|
+  resources :articles
+
   resources :passwords, :employees
 
   match 'login', :to => 'application#login'
