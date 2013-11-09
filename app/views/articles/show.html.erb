@@ -1,25 +1,12 @@
 <p class="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @article.title %>
-</p>
-
-<p>
-  <b>Published:</b>
-  <%= @article.published %>
-</p>
-
-<p>
-  <b>Body:</b>
-  <%= @article.body %>
-</p>
-
-<p>
-  <b>Author:</b>
-  <%= @article.author_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<h1><%= @article.title %></h1>
+	<div class="body">
+  	<%= raw(@article.body) %>
+  </div>
+  <div>
+  	<span class="badge badge-success">Updated <%= l @article.updated_at.localtime, :format => :short %></span>
+    <div class="pull-right"><% if @article.published? %><span class="label label-info">Published</span><% else %><span class="label label-warning">Unpublished</span><% end %> | <span class="glyphicon glyphicon-user"></span> <%= link_to @article.author.name, @article.author %>
+    </div>
+  </div>
+  <hr>

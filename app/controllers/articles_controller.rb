@@ -4,7 +4,8 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.xml
   def index
-    @articles = Article.all
+  	current_user
+    @articles = Article.where(:published => true)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -27,6 +28,8 @@ class ArticlesController < ApplicationController
   # GET /articles/new.xml
   def new
     @article = Article.new
+    
+    current_user
 
     respond_to do |format|
       format.html # new.html.erb

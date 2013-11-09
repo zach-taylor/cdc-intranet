@@ -1,22 +1,7 @@
 <h1>Company News</h1>
-
-
-<!--
-<% @articles.each do |article| %>
-  <tr>
-    <td><%= article.title %></td>
-    <td><%= article.published %></td>
-    <td><%= article.body %></td>
-    <td><%= article.author_id %></td>
-    <td><%= link_to 'Show', article %></td>
-    <td><%= link_to 'Edit', edit_article_path(article) %></td>
-    <td><%= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<% if @current_user.role == 'blogger' %>
+	<%= link_to 'New Article', new_article_path %>
 <% end %>
-</table>
--->
-
-
 <div class="span8">
 	<% @articles.each do |article| %>
     <h3><%= link_to article.title, article %></h3>
@@ -34,5 +19,3 @@
 
 
 <br />
-
-<%= link_to 'New Article', new_article_path %>

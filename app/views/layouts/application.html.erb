@@ -30,10 +30,7 @@
 			        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Company <b class="caret"></b></a>
 			        <ul class="dropdown-menu">
 			          <li><a href="/news">News</a></li>
-			          <li><a href="/earnings">Earnings</a></li>
-			          <li><a href="/customers">Customers</a></li>
-			          <li><a href="/stuff">Stuff</a></li>
-			          <li><a href="/morestuff">More stuff</a></li>
+			          <li><a href="/employees">Employees</a></li>
 			        </ul>
 			      </li>
 			    </ul>
@@ -55,11 +52,10 @@
   	<div class="container">
   		<%= yield %>
   	</div>
+  	<div class="container">
+  		<p class="pull-right"><%= image_tag('logo.png', :alt => 'CDC Logo', :class => 'pull-left') %>We hope that you find the information presented on the CDC Intranet informative, interesting and useful. While browsing the Intranet you may encounter information that is considered confidential information.  However, not every page that contains confidential information will be labeled as such.  Accordingly, all information on CDC Intranet should be considered Center for Disease Control confidential information and for internal purposes only, unless designated otherwise.  If you have questions regarding any information presented on this site please contact the Human Resources department</p>
+  	</div>
     <script src="/javascripts/jquery.js"></script>
     <script src="/javascripts/bootstrap.min.js"></script>
-    <%= javascript_include_tag 'prototype' %>
-    <%= javascript_include_tag 'effects' %>
-    <%= javascript_include_tag 'controls' %>
-    <%= javascript_include_tag 'rails' %>
   </body>
 </html>
