@@ -1,29 +1,27 @@
+
 development:
-	adapter: mysql2
-	encoding: utf8
-	reconnect: false
-	database: intranet
-	pool: 5
-	username: intranet
-	password: intranet
-	shost: 192.168.1.2
+  adapter: mysql2
+  encoding: utf8
+  database: intranet
+  username: intranet
+  password: intranet
+  host: 192.168.1.2
+  port: 3306
 
 test:
-	adapter: mysql2
-	encoding: utf8
-	reconnect: false
-	database: intranet
-	pool: 5
-	username: intranet
-	password: intranet
-	shost: 192.168.1.2
+  adapter: mysql2
+  encoding: utf8
+  database: intranet
+  username: intranet
+  password: intranet
+  host: 192.168.1.2
+  port: 3306
 
 production:
-	adapter: mysql2
-	encoding: utf8
-	reconnect: false
-	database: intranet
-	pool: 5
-	username: intranet
-	password: intranet
-	shost: 192.168.1.2
+  adapter: mysql2
+  encoding: utf8
+  database: intranet
+  username: intranet
+  password: intranet
+  host: 192.168.1.2
+  port: 3306
