@@ -1,12 +1,17 @@
-Loveme::Application.routes.draw do |map|
-  resources :articles
+Intranet::Application.routes.draw do |map|
 
-  resources :passwords, :employees
+	match 'export', :to => 'employees#export'
+	match 'employees/:id/profile' => 'employees#profile'
+	match 'direct_deposit' => 'employees#direct_deposit'
+	match 'personal_info' => 'employees#personal_info'
+	match 'contact_info' => 'employees#contact_info'
+	match 'search' => 'employees#search'
+  resources :passwords, :employees, :articles
 
   match 'login', :to => 'application#login'
   match 'auth', :to => 'application#auth'
-#root :to => redirect("/login")
- match 'logout', :to => 'application#logout'
+	#root :to => redirect("/login")
+	match 'logout', :to => 'application#logout'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -15,7 +20,6 @@ Loveme::Application.routes.draw do |map|
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
 
-  match 'download', :to => 'employees#download'
   
   match 'news', :to => 'articles#index'
 
@@ -61,7 +65,7 @@ Loveme::Application.routes.draw do |map|
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "employees#index"
+  root :to => "articles#index"
 
   # See how all your routes lay out with "rake routes"
 

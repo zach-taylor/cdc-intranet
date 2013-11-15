@@ -4,6 +4,7 @@ ruby '1.8.7'
 gem 'rails', '3.0.0.beta3'
 
 gem 'rake', '0.8.7'
+gem 'pry', '0.9.6'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

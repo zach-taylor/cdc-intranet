@@ -1,5 +1,5 @@
 <h1>Company News</h1>
-<% if @current_user.role == 'blogger' %>
+<% if @current_user.role == 'blogger' || @current_user.role == 'admin' %>
 	<%= link_to 'New Article', new_article_path %>
 <% end %>
 <div class="span8">

@@ -18,8 +18,10 @@
 		  	<td><%= employee.active %></td>
 		  	<td><%= employee.department %></td>
 		    <td>
-					<%= link_to raw('<span class="glyphicon glyphicon-edit"></span>'), edit_employee_path(employee), {:class => 'btn btn-primary btn-xs'} %>
-					<%= link_to raw('<span class="glyphicon glyphicon-trash"></span>'), employee, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger btn-xs' %>
+		    	<% if @current_user.role == 'admin' || @current_user.role == 'hr' %>
+						<%= link_to raw('<span class="glyphicon glyphicon-edit"></span>'), edit_employee_path(employee), {:class => 'btn btn-primary btn-xs'} %>
+						<%= link_to raw('<span class="glyphicon glyphicon-trash"></span>'), employee, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger btn-xs' %>
+					<% end %>
 		    </td>
 		  </tr>
 		<% end %>
@@ -27,5 +29,6 @@
 </table>
 
 <br />
-
-<%= link_to raw('<span class="glyphicon glyphicon-plus"></span>'), new_employee_path, {:class => 'btn btn-success'} %>
+<% if @current_user.role == 'admin' || @current_user.role == 'hr' %>
+	<%= link_to raw('<span class="glyphicon glyphicon-plus"></span>'), new_employee_path, {:class => 'btn btn-success'} %>
+<% end %>

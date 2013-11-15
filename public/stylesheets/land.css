@@ -87,10 +87,18 @@ h2 {
 	margin: 0 auto;
 }
 
+div.footer {
+	margin-top: 2em;
+	padding-top: 0.2em;
+	border-top: solid 0.2em;
+}
+
 div.footer img {
 	display: block;
   margin-left: auto;
-  margin-right: auto
+  margin-right: auto;
+  width: 8em;
+  padding-right: 0.5em;
 }
 
 .label {

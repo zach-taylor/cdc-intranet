@@ -8,7 +8,9 @@
   <div class="panel-body">
   	<div class="row">
   		<div class="col-md-12">
-	  		<%= link_to 'Edit', edit_employee_path(@employee), {:class => 'btn btn-default'} %>
+  			<% if @current_user.role == 'admin' || @current_user.role == 'hr' %>
+	  			<%= link_to 'Edit', edit_employee_path(@employee), {:class => 'btn btn-default'} %>
+	  		<% end %>
   		</div>
 		</div>
   	<div class="row">
@@ -35,6 +37,7 @@
   </div>
 
   <!-- Table -->
+  <h4>Passwords</h4>
   <table class="table">
   	<thead>
   		<tr>
@@ -45,12 +48,12 @@
   		</tr>
   	</thead>
   	<tbody>
-    	<%= @passwords.each do |pw| %>
+    	<% @passwords.each do |pw| %>
     		<tr>
     			<td><%= pw.service %></td>
     			<td><%= pw.username %></td>
     			<td><%= pw.password %></td>
-    			<td><%= pw.shared %></td>
+    			<td><%= pw.shared? ? 'yes' : 'no' %></td>
     		</tr>
 			<% end %>
   	</tbody>

@@ -6,6 +6,14 @@ class Employee < ActiveRecord::Base
     user = self.find(:first, "username = '#{name}' AND password = '#{password}'")
   end
   
+  def self.search(q)
+	  if q
+	    find(:all, :conditions => ['name LIKE ?', "%#{q}%"])
+	  else
+	    find(:all)
+	  end
+	end
+  
   ROLES = ['admin','hr','employee','blogger']
   
 end

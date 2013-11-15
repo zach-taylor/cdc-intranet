@@ -7,16 +7,14 @@
 	 	 <th>Password</th>
 	 	 <th>Shared?</th>
 	 	 <th>Actions</th>
-	 	 </tr>
+	 	</tr>
 	</thead>
 	<tbody>
 		<% @passwords.each do |password| %>
 			<tr>
 				<td><%= password.service %></td>
 				<td><%= password.password %></td>
-				<td>
-					<%= password.shared %>
-				</td>
+				<td><%= password.shared? ? 'yes' : 'no' %></td>
     		<td>
     			<%= link_to raw('<span class="glyphicon glyphicon-edit"></span>'), edit_password_path(password), {:class => 'btn btn-primary btn-xs'} %>
     			<%= link_to raw('<span class="glyphicon glyphicon-trash"></span>'), password, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger btn-xs' %>

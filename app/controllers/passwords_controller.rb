@@ -44,7 +44,7 @@ class PasswordsController < ApplicationController
   def create
     @password = Password.new(params[:password])
     
-    @password.employee = @current_user
+    @password.employee_id = params[:employee_id]
 
     respond_to do |format|
       if @password.save

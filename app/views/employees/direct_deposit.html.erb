@@ -1,0 +1,28 @@
+<p class="notice"><%= flash[:notice] %></p>
+<%= form_for(@employee, :remote => true) do |f| %>
+	<div class="panel panel-info">
+	  <!-- Default panel contents -->
+	  <div class="panel-heading"><h3 class="panel-title">Direct deposit: <%= @employee.name %></h3></div>
+	  <div class="panel-body">
+	  	<div class="row">
+				<div class="col-md-12">
+					<fieldset>
+						<div class="form-group">
+							<%= f.label :ssn %>
+							<%= f.text_field :ssn, {:class => "form-control"} %>
+						</div>
+						<div class="form-group">
+							<%= f.label :bank_account %>
+							<%= f.text_field :bank_account, {:class => "form-control"} %>
+						</div>
+					</fieldset>
+				</div>
+	  	</div>
+	  	<div class="row">
+	  		<div class="col-md-12">
+		  		<%= f.submit "Submit", {:class => "btn btn-primary"} %>
+	  		</div>
+			</div>
+	  </div>
+	</div>
+<% end %>
