@@ -1,28 +1,28 @@
 development:
-	adapter: mysql
+	adapter: mysql2
 	encoding: utf8
 	reconnect: false
-	database: test
+	database: intranet
 	pool: 5
 	username: intranet
 	password: intranet
 	shost: 192.168.1.2
 
 test:
-	adapter: mysql
+	adapter: mysql2
 	encoding: utf8
 	reconnect: false
-	database: test
+	database: intranet
 	pool: 5
 	username: intranet
 	password: intranet
 	shost: 192.168.1.2
 
 production:
-	adapter: mysql
+	adapter: mysql2
 	encoding: utf8
 	reconnect: false
-	database: test
+	database: intranet
 	pool: 5
 	username: intranet
 	password: intranet
