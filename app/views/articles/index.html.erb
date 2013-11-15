@@ -8,9 +8,10 @@
     <div class="body">
     	<%= raw(article.body) %>
     </div>
+    <%= link_to 'Edit', edit_article_path(article) if article.author == @current_user %>
     <div>
         <span class="badge badge-success">Updated <%= l article.updated_at.localtime, :format => :short %></span>
-        <div class="pull-right"><% if article.published? %><span class="label label-info">Published</span><% else %><span class="label label-warning">Unpublished</span><% end %> | <span class="glyphicon glyphicon-user"></span> <%= link_to article.author.name, article.author %></div>
+        <div class="pull-right"><% if article.published? %><span class="label label-info">Published</span><% else %><span class="label label-warning">Unpublished</span><% end %> | <span class="glyphicon glyphicon-user"></span> <%= link_to article.author.name, employee_path(article.author) + '/profile' %></div>
     </div>
     <hr>
   <% end %>

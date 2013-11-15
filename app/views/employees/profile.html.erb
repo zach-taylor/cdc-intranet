@@ -2,43 +2,63 @@
 
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h3 class="panel-title">User information</h3>
+        <h3 class="panel-title">Employee information</h3>
     </div>
     <div class="panel-body">
         <div class="row">
             <div class="col-md-3">
-                <img class="img-circle" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" alt="User Pic">
+                <img class="img-circle" src="/images/user100.png" alt="User Pic">
             </div>
             <div class="col-md-6">
                 <strong><%= @employee.name %></strong><br>
                 <table class="table table-condensed table-responsive table-user-information">
                     <tbody>
-                    <tr>
-                        <td>Department:</td>
-                        <td><%= @employee.department %></td>
-                    </tr>
-                    <tr>
-                        <td>Last update:</td>
-                        <td><%= l @employee.updated_at.localtime, :format => :short  %></td>
-                    </tr>
-                    <tr>
-                        <td>Role:</td>
-                        <td><%= @employee.role %></td>
-                    </tr>
-                    <tr>
-                        <td>Warnings</td>
-                        <td>0</td>
-                    </tr>
+	                    <tr>
+	                        <td>Department:</td>
+	                        <td><%= @employee.department %></td>
+	                    </tr>
+	                    <tr>
+	                        <td>Last update:</td>
+	                        <td><%= l @employee.updated_at.localtime, :format => :short  %></td>
+	                    </tr>
+	                    <tr>
+	                        <td>Role:</td>
+	                        <td><%= @employee.role %></td>
+	                    </tr>
+	                    <tr>
+	                        <td>Employee since:</td>
+	                        <td><%= l @employee.created_at.localtime, :format => :short  %></td>
+	                    </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
     <div class="panel-footer">
-        <button class="btn btn-sm btn-primary" type="button" data-toggle="tooltip" data-original-title="Send message to user"><i class="glyphicon glyphicon-envelope"></i></button>
+        <a href="mailto:<%= @employee.email %>" class="btn btn-sm btn-info"
+                              data-toggle="tooltip"
+                              data-original-title="Send email to employee"><i class="glyphicon glyphicon-envelope"></i></a>
         <span class="pull-right">
-            <button class="btn btn-sm btn-warning" type="button" data-toggle="tooltip" data-original-title="Edit this user"><i class="glyphicon glyphicon-edit"></i></button>
-            <button class="btn btn-sm btn-danger" type="button" data-toggle="tooltip" data-original-title="Remove this user"><i class="glyphicon glyphicon-remove"></i></button>
+            <% if @current_user.role == 'admin' || @current_user.role == 'hr' %>
+							<%= link_to raw('<span class="glyphicon glyphicon-edit"></span>'), edit_employee_path(@employee), {:class => 'btn btn-primary btn-sm'} %>
+							<%= link_to raw('<span class="glyphicon glyphicon-remove"></span>'), @employee, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger btn-sm' %>
+						<% end %>
         </span>
+    </div>
+</div><br>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Employee bio</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+        	<div class="col-md-12">
+        		<%= raw(@employee.bio) %>
+        	</div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        
     </div>
 </div>

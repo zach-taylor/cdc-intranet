@@ -8,8 +8,8 @@
                    alt="User Pic">
           </div>
           <div class="col-md-10">
-              <strong><%= employee.name %></strong><br>
-              <span class="text-muted">Deparment: <%= employee.department %></span>
+              <strong><%= link_to employee.name, employee_path(employee) + '/profile' %></strong><br>
+              <span class="text-muted">Department: <%= employee.department %></span>
           </div>
           <div class="col-md-1 dropdown-user" data-for="#<%= employee.username %>">
               <i class="glyphicon glyphicon-chevron-down text-muted"></i>
@@ -32,38 +32,32 @@
                               <strong><%= employee.name %></strong><br>
                               <table class="table table-condensed table-responsive table-user-information">
                                   <tbody>
-                                  <tr>
-                                      <td>User level:</td>
-                                      <td>Administrator</td>
-                                  </tr>
-                                  <tr>
-                                      <td>Registered since:</td>
-                                      <td>11/12/2013</td>
-                                  </tr>
-                                  <tr>
-                                      <td>Topics</td>
-                                      <td>15</td>
-                                  </tr>
-                                  <tr>
-                                      <td>Warnings</td>
-                                      <td>0</td>
-                                  </tr>
+	                                  <tr>
+								                        <td>Last update:</td>
+								                        <td><%= l employee.updated_at.localtime, :format => :short  %></td>
+								                    </tr>
+								                    <tr>
+								                        <td>Role:</td>
+								                        <td><%= employee.role %></td>
+								                    </tr>
+								                    <tr>
+								                        <td>Employee since:</td>
+								                        <td><%= l employee.created_at.localtime, :format => :short  %></td>
+								                    </tr>
                                   </tbody>
                               </table>
                           </div>
                       </div>
                   </div>
                   <div class="panel-footer">
-                      <button class="btn btn-sm btn-primary" type="button"
+                      <a href="mailto:<%= employee.email %>" class="btn btn-sm btn-info"
                               data-toggle="tooltip"
-                              data-original-title="Send message to user"><i class="glyphicon glyphicon-envelope"></i></button>
+                              data-original-title="Send email to employee"><i class="glyphicon glyphicon-envelope"></i></a>
                       <span class="pull-right">
-                          <button class="btn btn-sm btn-warning" type="button"
-                                  data-toggle="tooltip"
-                                  data-original-title="Edit this user"><i class="glyphicon glyphicon-edit"></i></button>
-                          <button class="btn btn-sm btn-danger" type="button"
-                                  data-toggle="tooltip"
-                                  data-original-title="Remove this user"><i class="glyphicon glyphicon-remove"></i></button>
+                      	<% if @current_user.role == 'admin' || @current_user.role == 'hr' %>
+													<%= link_to raw('<span class="glyphicon glyphicon-edit"></span>'), edit_employee_path(employee), {:class => 'btn btn-primary btn-sm'} %>
+													<%= link_to raw('<span class="glyphicon glyphicon-remove"></span>'), employee, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-danger btn-sm' %>
+												<% end %>
                       </span>
                   </div>
               </div>

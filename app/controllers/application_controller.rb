@@ -1,15 +1,10 @@
 class ApplicationController < ActionController::Base
   layout 'root'
-
-  # bad practice:  blacklisting is bad, whitelisting is better
-  #   good = before_filter :authorize, :except => :login
-  #   bad = before_filter :authorize, :only => [:edit, :delete]
-  
+	
+	before_filter :current_user
   before_filter :authorize, :only => [:edit,:new,:show,:index]
   helper :all
   
-  # vulnerability:  below method should be protected because methods in here appear
-  # as instance methods in all of the controllers
   def authorize
     unless Employee.find_by_id(session[:employee_id])
       flash[:notice] = 'Please login'

@@ -22,6 +22,7 @@ Intranet::Application.routes.draw do |map|
 
   
   match 'news', :to => 'articles#index'
+  match 'policies', :to => 'pages#policies'
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase

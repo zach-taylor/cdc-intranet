@@ -3,7 +3,6 @@ class EmployeesController < ApplicationController
 
 	def index
     @employees = Employee.find(:all)
-    @current_user = current_user
     
     respond_to do |format|
       format.html # index.html.erb
@@ -28,7 +27,6 @@ class EmployeesController < ApplicationController
   def show
     @employee = Employee.find(params[:id])
     @passwords = @employee.passwords
-    @current_user = current_user
     
     respond_to do |format|
       format.html # show.html.erb
@@ -47,7 +45,6 @@ class EmployeesController < ApplicationController
   
   def profile
   	@employee = Employee.find(params[:id])
-  	@current_user = current_user
   end
   
   def export
@@ -68,7 +65,6 @@ class EmployeesController < ApplicationController
   
   def search
   	@employees = Employee.search(params[:q])
-  	@current_user = current_user
   end
   
   def edit
